@@ -5,5 +5,5 @@ using BlazorShared.Models;
 namespace BlazorShared.Interfaces;
 public interface IOrderService
 {
-    Task<List<OrderViewModel>> List();
+    Task<List<Order>> List();
 }

@@ -2,7 +2,7 @@
 
 namespace BlazorShared.Models;
 
-public class OrderDetailViewModel : OrderViewModel
+public class OrderDetailViewModel : Order
 {
     public List<OrderItemViewModel> OrderItems { get; set; } = new();
 }

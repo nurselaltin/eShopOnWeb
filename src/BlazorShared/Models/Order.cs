@@ -1,7 +1,7 @@
 ﻿
 namespace BlazorShared.Models;
 
-public class OrderViewModel
+public class Order
 {
    
     public int OrderNumber { get; set; }
