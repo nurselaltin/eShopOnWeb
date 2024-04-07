@@ -10,7 +10,7 @@ public partial class OrderList : BlazorComponent
 {
     [Microsoft.AspNetCore.Components.Inject]
     public IOrderService OrderService { get; set; }
-
+        
     private List<Order> orders = new List<Order>();
 
     protected override async Task OnAfterRenderAsync(bool firstRender = true)

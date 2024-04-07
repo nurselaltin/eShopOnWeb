@@ -14,7 +14,7 @@ public class OrderFilterPaginatedSpecification : Specification<Order>
             take = int.MaxValue;
         }
         Query
-            .Where(i => (!Id.HasValue || i.Id == Id))
+            .Where(i => (!Id.HasValue || i.Id == Id)).Include(o => o.OrderItems)
             .Skip(skip).Take(take);
     }
 }

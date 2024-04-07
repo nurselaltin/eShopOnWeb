@@ -51,6 +51,7 @@ public class OrderListPagedEndpoint : IEndpoint<IResult, ListPagedOrderRequest, 
             Id: request.Id);
 
         var items = await itemRepository.ListAsync(pagedSpec);
+        var list = items.Select(_mapper.Map<OrderDto>);
 
         response.Orders.AddRange(items.Select(_mapper.Map<OrderDto>));
        

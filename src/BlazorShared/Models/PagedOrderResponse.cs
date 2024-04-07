@@ -4,6 +4,6 @@ namespace BlazorShared.Models;
 
 public class PagedOrderResponse
 {
-    public List<Order> Order { get; set; } = new List<Order>();
+    public List<Order> Orders { get; set; } = new List<Order>();
     public int PageCount { get; set; } = 0;
 }

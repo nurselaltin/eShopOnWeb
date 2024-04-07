@@ -27,7 +27,7 @@ public class CachedOrderServiceDecorator : IOrderService
 
     public async Task<List<Order>> List()
     {
-        string key = "items";
+        string key = "orders";
         var cacheEntry = await _localStorageService.GetItemAsync<CacheEntry<List<Order>>>(key);
         if (cacheEntry != null)
         {

@@ -8,6 +8,8 @@ public class OrderFilterSpecification : Specification<Order>
 {
     public OrderFilterSpecification(int? Id)
     {
-        Query.Where(i => (!Id.HasValue || i.Id == Id));
+        Query
+            .Where(i => (!Id.HasValue || i.Id == Id))
+            .Include(o => o.OrderItems);
     }
 }

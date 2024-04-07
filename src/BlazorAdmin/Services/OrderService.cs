@@ -26,10 +26,9 @@ public class OrderService : IOrderService
     {
         _logger.LogInformation("Fetching order from API.");
 
-        var itemListTask = _httpService.HttpGet<PagedOrderResponse>($"order");
+        var itemListTask = _httpService.HttpGet<PagedOrderResponse>($"orders");
         await Task.WhenAll(itemListTask);
-        var items = itemListTask.Result.Order;
-        
+        var items = itemListTask.Result.Orders;
         return items;
     }
 }
