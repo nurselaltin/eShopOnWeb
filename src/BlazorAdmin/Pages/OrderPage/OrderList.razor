@@ -17,32 +17,31 @@ else
     <thead>
         <tr>
             <th>Order Number</th>
+            <th>Buyer Id</th>
             <th>Order Date</th>
             <th>Total</th>
             <th>Status</th>
-            @* <th>Actions</th> *@
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody class="cursor-pointer">
         @foreach (var item in orders)
         {
             <tr>
+                <td>@item.Id</td>
                 <td>@item.BuyerId</td>
                 <td>@item.OrderDate</td>
                 <td>@item.Total</td>
                 <td>@item.OrderStatus</td>
-                @* <td>Action</td> *@
-               @*  <td>
+                <td>
                     <button @onclick="@(() => EditClick(item.Id))" @onclick:stopPropagation="true" class="btn btn-primary">
                         Edit
                     </button>
-
-                    <button @onclick="@(() => DeleteClick(item.Id))" @onclick:stopPropagation="true" class="btn btn-danger">
-                        Delete
-                    </button>
-                </td> *@
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+    <OrderEdit @ref="OrderEditComponent" OnSaveClick="ReloadOrders"></OrderEdit>
 }

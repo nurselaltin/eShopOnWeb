@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BlazorAdmin.Helpers;
+using BlazorAdmin.Services;
 using BlazorShared.Interfaces;
 using BlazorShared.Models;
 
@@ -13,6 +14,8 @@ public partial class OrderList : BlazorComponent
         
     private List<Order> orders = new List<Order>();
 
+    private OrderEdit OrderEditComponent { get; set; }
+
     protected override async Task OnAfterRenderAsync(bool firstRender = true)
     {
         if (firstRender)
@@ -23,5 +26,16 @@ public partial class OrderList : BlazorComponent
         }
 
         await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private async Task EditClick(int id)
+    {
+        await OrderEditComponent.Open(id);
+    }
+
+    private async Task ReloadOrders()
+    {
+        orders = await OrderService.List();
+        StateHasChanged();
     }
 }
