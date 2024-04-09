@@ -49,5 +49,26 @@ public class CachedOrderServiceDecorator : IOrderService
         return items;
     }
 
- 
+
+    public async Task<Order> GetById(int id)
+    {
+        return (await List()).FirstOrDefault(x => x.Id == id);
+    }
+
+    public async Task<Order> Edit(Order order)
+    {
+        var result = await _orderService.Edit(order);
+        await RefreshLocalStorageList();
+
+        return result;
+    }
+    private async Task RefreshLocalStorageList()
+    {
+        string key = "orders";
+
+        await _localStorageService.RemoveItemAsync(key);
+        var items = await _orderService.List();
+        var entry = new CacheEntry<List<Order>>(items);
+        await _localStorageService.SetItemAsync(key, entry);
+    }
 }

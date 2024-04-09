@@ -47,4 +47,10 @@ public class Order : BaseEntity, IAggregateRoot
         }
         return total;
     }
+
+    public void UpdateStatus(string _orderStatus)
+    {
+        Guard.Against.NullOrEmpty(_orderStatus, nameof(_orderStatus));
+        OrderStatus = _orderStatus;
+    }
 }

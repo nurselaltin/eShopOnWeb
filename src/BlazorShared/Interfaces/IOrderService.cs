@@ -6,4 +6,6 @@ namespace BlazorShared.Interfaces;
 public interface IOrderService
 {
     Task<List<Order>> List();
+    Task<Order> Edit(Order order);
+    Task<Order> GetById(int id);
 }

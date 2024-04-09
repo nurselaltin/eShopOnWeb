@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Microsoft.eShopWeb.PublicApi.CatalogItemEndpoints;
+namespace Microsoft.eShopWeb.PublicApi.OrderEndpoints;
 
-public class ListPagedCatalogItemResponse : BaseResponse
+public class ListPagedOrderResponse : BaseResponse
 {
-    public ListPagedCatalogItemResponse(Guid correlationId) : base(correlationId)
+    public ListPagedOrderResponse(Guid correlationId) : base(correlationId)
     {
     }
 
-    public ListPagedCatalogItemResponse()
+    public ListPagedOrderResponse()
     {
     }
 
-    public List<CatalogItemDto> CatalogItems { get; set; } = new List<CatalogItemDto>();
+    public List<OrderDto> Orders { get; set; } = new List<OrderDto>();
     public int PageCount { get; set; }
 }
