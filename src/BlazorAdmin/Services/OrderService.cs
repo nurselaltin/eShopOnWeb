@@ -26,10 +26,21 @@ public class OrderService : IOrderService
     {
         _logger.LogInformation("Fetching order from API.");
 
-        var itemListTask = _httpService.HttpGet<PagedOrderResponse>($"order");
+        var itemListTask = _httpService.HttpGet<PagedOrderResponse>($"orders");
         await Task.WhenAll(itemListTask);
-        var items = itemListTask.Result.Order;
-        
+        var items = itemListTask.Result.Orders;
         return items;
+    }
+    public async Task<Order> Edit(Order order)
+    {
+        return (await _httpService.HttpPut<EditOrderResult>("orders", order)).Order;
+    }
+    public async Task<Order> GetById(int id)
+    {
+        var itemGetTask = _httpService.HttpGet<EditOrderResult>($"orders/{id}");
+        await Task.WhenAll(itemGetTask);
+
+        var order = itemGetTask.Result.Order;
+        return order;
     }
 }
