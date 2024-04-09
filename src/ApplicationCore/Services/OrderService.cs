@@ -46,7 +46,7 @@ public class OrderService : IOrderService
             return orderItem;
         }).ToList();
 
-        var order = new Order(basket.BuyerId, shippingAddress, items, "PENDİNG");
+        var order = new Order(basket.BuyerId, shippingAddress, items, "PENDING");
 
         await _orderRepository.AddAsync(order);
     }
